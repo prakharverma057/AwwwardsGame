@@ -1,6 +1,8 @@
 module.exports = {
+  mode: "jit",
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}", // Include all files in the src folder
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./src/index.css", // Include all files in the src folder
     "./public/index.html",
   ],
   theme: {
