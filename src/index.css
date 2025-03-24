@@ -167,6 +167,7 @@ body {
 
 /* From Uiverse.io by G4b413l */
 /* https://uiverse.io/G4b413l/tidy-walrus-92 */
+/* From Uiverse.io by G4b413l */
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
@@ -232,4 +233,40 @@ body {
   top: 0;
   left: 0;
   animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wobble1 {
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+@keyframes wobble2 {
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(66%) scale(0.65);
+    opacity: 0.8;
+  }
 }
