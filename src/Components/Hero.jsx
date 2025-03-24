@@ -1,6 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 import Button from "./Button";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -21,6 +23,33 @@ const Hero = () => {
     setCurrentIndex(upcomingVideoIndex);
     console.log(getVideoSrc(currentIndex));
   };
+
+  useGSAP(
+    () => {
+      if (hasClicked) {
+        gsap.killTweensOf("#next-video");
+        gsap.killTweensOf("#current-video");
+
+        gsap.set("#next-video", { visibility: "visible" });
+        gsap.to("#next-video", {
+          transformOrigin: "center center",
+          scale: 1,
+          width: "100%",
+          height: "100%",
+          duration: 1,
+          ease: "power1.inOut",
+          onStart: () => nextVideoRef.current.play(),
+        });
+        gsap.from("#current-video", {
+          transformOrigin: "center center",
+          scale: 0,
+          duration: 1.5,
+          ease: "power1.inOut ",
+        });
+      }
+    },
+    { dependencies: [currentIndex], revertOnUpdate: true }
+  );
 
   const getVideoSrc = (index) => `/videos/hero-${index}.mp4`;
 
